@@ -10,7 +10,7 @@ import Foundation
 
 class Item {
     
-    var name:String
+    var name:String 
     var calories:Double
     
     init(name:String , calories:Double){

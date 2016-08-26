@@ -10,14 +10,16 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    var delegate:AddAMealDelegate?
     
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var happinessField: UITextField!
     
+    
 
     @IBAction func add(sender: AnyObject) {
         
-        if nameField == nil || happinessField == nil {
+        if nameField.text == nil || happinessField.text == nil {
             return
         }
         
@@ -28,6 +30,15 @@ class ViewController: UIViewController {
         let meal = Meal(name: name, happiness: Int(happiness)!)
         
         print("eaten: \(meal.name) \(meal.happiness)")
+        
+        if delegate == nil {
+            return
+        }
+        delegate!.add(meal)
+        
+        if let navigation = self.navigationController {
+            navigation.popViewControllerAnimated(true)
+        }
     }
     
 }
