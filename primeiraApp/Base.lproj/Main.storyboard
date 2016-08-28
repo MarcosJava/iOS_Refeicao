@@ -48,6 +48,14 @@ sundubu etc</string>
                                     <action selector="add:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Ht-pR-abd"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="odO-J8-V4Z">
+                                <rect key="frame" x="30" y="274" width="286" height="321"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="rbF-QF-y9J"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="iQZ-Pm-kfd"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>

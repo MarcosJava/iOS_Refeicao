@@ -8,14 +8,26 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+//TableViewDataSource = Para acoes de dados = qntidade, quem sera listado.
+//TableViewDelegate = Toda acao na tabela, click, swipe, prees e outros.
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
     
     var delegate:AddAMealDelegate?
     
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var happinessField: UITextField!
     
+    var items = [ Item(name: "Eggplant Brownie", calories: 10),
+                  Item(name: "Zucchini Muffin", calories: 10),
+                  Item(name: "Cookie", calories: 10),
+                  Item(name: "Coconut oil", calories: 500),
+                  Item(name: "Chocolate frosting", calories: 1000),
+                  Item(name: "Chocolate chip", calories: 1000)
+    ]
     
+    var selected:Array<Item> = [Item]()
+
 
     @IBAction func add(sender: AnyObject) {
         
@@ -28,8 +40,8 @@ class ViewController: UIViewController {
         
         
         let meal = Meal(name: name, happiness: Int(happiness)!)
-        
-        print("eaten: \(meal.name) \(meal.happiness)")
+        meal.items = selected
+        print("eaten: \(meal.name) \(meal.happiness) \(meal.items)")
         
         if delegate == nil {
             return
@@ -39,6 +51,54 @@ class ViewController: UIViewController {
         if let navigation = self.navigationController {
             navigation.popViewControllerAnimated(true)
         }
+    }
+    
+    func tableView(tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
+        return items.count
+    }
+    
+    func tableView(tableView: UITableView,
+                   cellForRowAtIndexPath indexPath: NSIndexPath)
+        -> UITableViewCell {
+            let row = indexPath.row
+            let item = items[ row ]
+            let cell = UITableViewCell(style:
+                UITableViewCellStyle.Default,reuseIdentifier: nil)
+            cell.textLabel!.text = item.name
+            return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+            
+            if cell.accessoryType == UITableViewCellAccessoryType.None {
+                cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+                selected.append(items[indexPath.row])
+                
+            } else if cell.accessoryType == UITableViewCellAccessoryType.Checkmark {
+                cell.accessoryType = UITableViewCellAccessoryType.None
+                if let position = find(selected, toFind: items[indexPath.row]) {
+                    selected.removeAtIndex(position)
+                }
+            }
+        }
+        
+        print(selected)
+
+    }
+    
+    func find(elements:Array<Item>, toFind:Item) -> Int? {
+        
+        let max = elements.count - 1;
+        
+        for i in 0...max {
+            if toFind == elements[i] {
+                return i
+            }
+        }
+        return nil;
     }
     
 }
