@@ -13,6 +13,8 @@
 		180CDC061D6BDE4C00ECAC3E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 180CDC041D6BDE4C00ECAC3E /* LaunchScreen.storyboard */; };
 		181092AF1D6FDC9E00299F42 /* MealsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181092AE1D6FDC9E00299F42 /* MealsTableViewController.swift */; };
 		181092B11D6FF1FC00299F42 /* AddAMealDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181092B01D6FF1FC00299F42 /* AddAMealDelegate.swift */; };
+		18D562DD1D7318E500F81966 /* NewItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D562DB1D7318E500F81966 /* NewItemViewController.xib */; };
+		18D562DF1D731A8600F81966 /* NewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D562DE1D731A8600F81966 /* NewItemViewController.swift */; };
 		18D6FD881D6E84B10025A8D3 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D6FD871D6E84B10025A8D3 /* Meal.swift */; };
 		18D6FD8A1D6E84D80025A8D3 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D6FD891D6E84D80025A8D3 /* Item.swift */; };
 		18D6FD8C1D6E87490025A8D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D6FD8B1D6E87490025A8D3 /* ViewController.swift */; };
@@ -27,6 +29,8 @@
 		180CDC071D6BDE4C00ECAC3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		181092AE1D6FDC9E00299F42 /* MealsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealsTableViewController.swift; sourceTree = "<group>"; };
 		181092B01D6FF1FC00299F42 /* AddAMealDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAMealDelegate.swift; sourceTree = "<group>"; };
+		18D562DB1D7318E500F81966 /* NewItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewItemViewController.xib; sourceTree = "<group>"; };
+		18D562DE1D731A8600F81966 /* NewItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewItemViewController.swift; sourceTree = "<group>"; };
 		18D6FD871D6E84B10025A8D3 /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		18D6FD891D6E84D80025A8D3 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		18D6FD8B1D6E87490025A8D3 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +89,7 @@
 		18D6FD851D6E7E450025A8D3 /* viewcontrollers */ = {
 			isa = PBXGroup;
 			children = (
+				18D562DE1D731A8600F81966 /* NewItemViewController.swift */,
 				18D6FD8B1D6E87490025A8D3 /* ViewController.swift */,
 				181092AE1D6FDC9E00299F42 /* MealsTableViewController.swift */,
 				181092B01D6FF1FC00299F42 /* AddAMealDelegate.swift */,
@@ -96,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				180CDBFF1D6BDE4C00ECAC3E /* Main.storyboard */,
+				18D562DB1D7318E500F81966 /* NewItemViewController.xib */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -161,6 +167,7 @@
 			files = (
 				180CDC061D6BDE4C00ECAC3E /* LaunchScreen.storyboard in Resources */,
 				180CDC031D6BDE4C00ECAC3E /* Assets.xcassets in Resources */,
+				18D562DD1D7318E500F81966 /* NewItemViewController.xib in Resources */,
 				180CDC011D6BDE4C00ECAC3E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -178,6 +185,7 @@
 				181092B11D6FF1FC00299F42 /* AddAMealDelegate.swift in Sources */,
 				18D6FD8C1D6E87490025A8D3 /* ViewController.swift in Sources */,
 				180CDBFC1D6BDE4C00ECAC3E /* AppDelegate.swift in Sources */,
+				18D562DF1D731A8600F81966 /* NewItemViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

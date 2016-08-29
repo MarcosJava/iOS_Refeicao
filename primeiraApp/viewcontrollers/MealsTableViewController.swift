@@ -30,7 +30,31 @@ class MealsTableViewController: UITableViewController, AddAMealDelegate{
         let meal = meals[indexPath.row]
         let cell = UITableViewCell(style: .Default, reuseIdentifier: nil)
         cell.textLabel?.text = meal.name
+        
+        let longPress = UILongPressGestureRecognizer(target: self, action: Selector("showDetails:"))
+        cell.addGestureRecognizer(longPress)
         return cell
+    }
+    
+    func showDetails(recognize: UILongPressGestureRecognizer){
+     
+        if recognize.state == UIGestureRecognizerState.Began {
+            
+            let cell = recognize.view as! UITableViewCell
+            let indexPath = tableView.indexPathForCell(cell)
+            if indexPath == nil {
+                return
+            }
+            let row = indexPath!.row
+            let meal = meals[row]
+            
+            let details = UIAlertController(title: meal.name, message: "Happiness: \(meal.happiness)", preferredStyle: .Alert)
+            let ok = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
+            
+            details.addAction(ok)
+            
+            presentViewController(details, animated: true, completion: nil)
+        }
     }
     
     func add(meal: Meal){

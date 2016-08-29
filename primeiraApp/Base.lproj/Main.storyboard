@@ -49,7 +49,7 @@ sundubu etc</string>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="odO-J8-V4Z">
-                                <rect key="frame" x="30" y="274" width="286" height="321"/>
+                                <rect key="frame" x="30" y="275" width="286" height="321"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="rbF-QF-y9J"/>
@@ -63,6 +63,7 @@ sundubu etc</string>
                     <connections>
                         <outlet property="happinessField" destination="UNE-41-g2V" id="lNQ-qe-R8i"/>
                         <outlet property="nameField" destination="WhO-gk-lPp" id="yG9-Jm-Icq"/>
+                        <outlet property="tableView" destination="odO-J8-V4Z" id="Psv-Jk-lZL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

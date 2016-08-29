@@ -8,11 +8,20 @@
 
 import UIKit
 
+
+protocol AddAMealDelegate {
+    func add(meal: Meal)
+}
+
+
 //TableViewDataSource = Para acoes de dados = qntidade, quem sera listado.
 //TableViewDelegate = Toda acao na tabela, click, swipe, prees e outros.
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AddAnItemDelegate {
     
     
+    
+    
+    @IBOutlet weak var tableView: UITableView!
     var delegate:AddAMealDelegate?
     
     @IBOutlet weak var nameField: UITextField!
@@ -28,6 +37,29 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     var selected:Array<Item> = [Item]()
 
+    
+    override func viewDidLoad() {
+        
+        let newItemButton = UIBarButtonItem(title: "new item", style: .Plain, target: self, action: #selector(ViewController.showNewItem))
+        
+        navigationItem.rightBarButtonItem = newItemButton
+        
+    }
+    
+    // delegador do addAnItemDelegate
+    func addNew(item: Item) {
+        items.append(item)
+        tableView.reloadData()
+    }
+    
+    @IBAction func showNewItem() {
+        let newItem = NewItemViewController(delegate: self)
+        if let navigation = navigationController {
+            navigation.pushViewController(newItem, animated: true)
+        }
+    }
+    
+    
 
     @IBAction func add(sender: AnyObject) {
         

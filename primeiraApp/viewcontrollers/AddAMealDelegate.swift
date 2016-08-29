@@ -8,6 +8,3 @@
 
 import Foundation
 
-protocol AddAMealDelegate {
-    func add(meal: Meal)
-}
