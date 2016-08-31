@@ -48,7 +48,7 @@ class MealsTableViewController: UITableViewController, AddAMealDelegate{
             let row = indexPath!.row
             let meal = meals[row]
             
-            let details = UIAlertController(title: meal.name, message: "Happiness: \(meal.happiness)", preferredStyle: .Alert)
+            let details = UIAlertController(title: meal.name, message: meal.details(), preferredStyle: .Alert)
             let ok = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
             
             details.addAction(ok)

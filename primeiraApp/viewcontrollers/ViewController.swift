@@ -49,7 +49,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // delegador do addAnItemDelegate
     func addNew(item: Item) {
         items.append(item)
-        tableView.reloadData()
+        if let table = tableView {
+            table.reloadData()
+            
+        } else {
+            Alert(controller: self).erro()
+        }
     }
     
     @IBAction func showNewItem() {
