@@ -9,11 +9,19 @@
 import Foundation
 
 
-class Meal {
+class Meal : NSObject, NSCoding{
     
     var name:String
     var happiness:Int
     var items = Array<Item>()
+    
+    required init(coder aDecoder: NSCoder) {
+        self.name = aDecoder.decodeObjectForKey("name") as! String
+        self.happiness =
+            aDecoder.decodeIntegerForKey("happiness")
+        self.items =
+            aDecoder.decodeObjectForKey("items") as! Array<Item>
+    }
     
     init(name:String, happiness:Int){
         self.name = name
@@ -36,5 +44,11 @@ class Meal {
                 += "\n * \(item.name) - calories: \(item.calories)"
         }
         return message
+    }
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(self.name, forKey: "name")
+        aCoder.encodeInteger(self.happiness, forKey: "happiness")
+        aCoder.encodeObject(self.items, forKey: "items")
     }
 }

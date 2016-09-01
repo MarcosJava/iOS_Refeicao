@@ -27,13 +27,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var happinessField: UITextField!
     
-    var items = [ Item(name: "Eggplant Brownie", calories: 10),
-                  Item(name: "Zucchini Muffin", calories: 10),
-                  Item(name: "Cookie", calories: 10),
-                  Item(name: "Coconut oil", calories: 500),
-                  Item(name: "Chocolate frosting", calories: 1000),
-                  Item(name: "Chocolate chip", calories: 1000)
-    ]
+    var items = Array<Item>()
     
     var selected:Array<Item> = [Item]()
 
@@ -41,14 +35,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         
         let newItemButton = UIBarButtonItem(title: "new item", style: .Plain, target: self, action: #selector(ViewController.showNewItem))
-        
         navigationItem.rightBarButtonItem = newItemButton
         
+        items = Dao().loadItems()
     }
+    
     
     // delegador do addAnItemDelegate
     func addNew(item: Item) {
         items.append(item)
+        Dao().saveItems(items)
         if let table = tableView {
             table.reloadData()
             

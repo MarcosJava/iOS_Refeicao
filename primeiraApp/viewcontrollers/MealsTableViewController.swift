@@ -10,11 +10,14 @@ import UIKit
 
 class MealsTableViewController: UITableViewController, AddAMealDelegate{
     
-    var meals = [ Meal(name: "Eggplant brownie", happiness: 5),
-                  Meal(name: "Zucchini Muffin", happiness: 3)]
+    //var meals = [ Meal(name: "Eggplant brownie", happiness: 5),
+      //            Meal(name: "Zucchini Muffin", happiness: 3)]
 
+    var meals = Array<Meal>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        meals = Dao().loadMeals()
     }
 
 
@@ -36,6 +39,8 @@ class MealsTableViewController: UITableViewController, AddAMealDelegate{
         return cell
     }
     
+    var selectedMeal:Meal?
+    
     func showDetails(recognize: UILongPressGestureRecognizer){
      
         if recognize.state == UIGestureRecognizerState.Began {
@@ -46,21 +51,26 @@ class MealsTableViewController: UITableViewController, AddAMealDelegate{
                 return
             }
             let row = indexPath!.row
-            let meal = meals[row]
+            let meal = meals[ row ]
             
-            let details = UIAlertController(title: meal.name, message: meal.details(), preferredStyle: .Alert)
-            let ok = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
-            
-            details.addAction(ok)
-            
-            presentViewController(details, animated: true, completion: nil)
+            RemoveMealController(controller: self).show(meal,
+                                                        handler: { action in
+                                                            self.meals.removeAtIndex(row)
+                                                            self.tableView.reloadData()
+            })
+
+            Dao().saveMeals(self.meals)
         }
     }
     
+    
+    
     func add(meal: Meal){
         meals.append(meal)
+        Dao().saveMeals(meals)
         tableView.reloadData()
     }
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
